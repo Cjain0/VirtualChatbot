@@ -2,10 +2,14 @@ import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.awt.Desktop;
 import javax.swing.*;
 
 
@@ -88,6 +92,12 @@ chatbox.addActionListener(new ActionListener() {
                     for (int i = 0; i < db.getAllMovies().size(); i++) {
                         res2(i + 1 + ". " + db.getAllMovies().get(i).substring(0,db.getAllMovies().get(i).indexOf(",")) + " ");
                 }
+
+                res("Do you want to see a trailer, If so which one?");
+                b.setText(("Black Adam Trailer"));
+                b2.setText(("Smile Trailer"));
+                b3.setText(("Thor Love and Thunder Trailer"));
+
                 b.setVisible(true);
                 b2.setVisible(true);
                 b3.setVisible(true);
@@ -97,18 +107,29 @@ chatbox.addActionListener(new ActionListener() {
                 if(patternMatcher(contactOptions, g)){
                     res2("Phone Number: 1-800-333-0061");
                     res2("Location: 160-1876 Cooper Road, Kelowna, BC V1Y 9N6");
-                    res2("Email: ticketbookingsytem@gmail.com");
+                    res2("Email: ticketbookingsystem@gmail.com");
                     b.setVisible(true);
                     b2.setVisible(true);
                     b3.setVisible(true);
-                }           
-            
+                }
+                
+                String [] MovieInfo = {"Movie Information", "movie information", "Movie information", "Movie info"};
+                if(patternMatcher(MovieInfo, g)){
+                    res("Which Movie Information would you like to see?");
+                    b.setText("Black Adam");
+                    b2.setText("Smile");
+                    b3.setText("Thor Love and Thunder");
+                    b.setVisible(true);
+                    b2.setVisible(true);
+                    b3.setVisible(true);
+                }
             
             if (count == 1) {
                 email = g;
             
                 if (db.checkExistingCust(email)){
                     res("Welcome back!");
+                    
                     res2("Select a movie: ");
                     custGender = db.getCustGender(email).charAt(0);
                     custName = db.getCustName(email);
@@ -159,11 +180,13 @@ chatbox.addActionListener(new ActionListener() {
                 custBdate = g;
                 db.createCustomer(custName, custGender+ "", email, custBdate);
                 res("Account created!");
+                res("Do you want to see the trailer, If so which one?");
+                
                 res("Select a movie: ");
                 for (int i = 0; i < db.getAllMovies().size(); i++) {
                         res2(db.getAllMovies().get(i) + " ");
                     }
-
+                
                     
                 
                 count++;
@@ -309,6 +332,20 @@ b.addActionListener(new ActionListener() {
               count = 5;
             
             }
+            else if(b.getText().equals("Black Adam Trailer")){
+                Desktop d = Desktop.getDesktop();
+                try {
+                    d.browse(new URI("https://www.youtube.com/watch?v=X0tOpBuYasI"));
+                } catch (IOException | URISyntaxException e2) {
+                    e2.printStackTrace();
+                } 
+                b2.setText("Amend your booking");
+                b.setText("Book a Ticket");
+                b3.setText("Cancel your booking");
+                b.setVisible(true);
+                b2.setVisible(true);
+                b3.setVisible(true);
+            }
             else if (b.getText().equals("Delete")){
                 db.deleteMovieTicket(email, movieName);
                 db.unselectSeat(seatid);
@@ -321,8 +358,20 @@ b.addActionListener(new ActionListener() {
                 b3.setVisible(true);
                 res2("How else can I help you?");
             }
+            else if (b.getText().equals("Black Adam")){
+                String result = WikipediaInfo.info("Black Adam");
+                for (int i = 0, size = result.length(); i < size; i += 88)
+                    res2(result.substring(i, Math.min(i + 88, size)));
+                b2.setText("Amend your booking");
+                b.setText("Book a Ticket");
+                b3.setText("Cancel your booking");
+                b.setVisible(true);
+                b2.setVisible(true);
+                b3.setVisible(true);
+            }
            
             else if (b.getText().equals("Book a Ticket")){
+            Chatarea.setText("");
             b.setText("Cancel");
             count = 1;
             b2.setVisible(false);
@@ -346,7 +395,9 @@ b.addActionListener(new ActionListener() {
                 confirm = "y";
                 count = 7;
                 db.createMovieTicket(email, movieName, seatid, "");
+        
                 Chatarea.setText("");
+                
                     Email send = new Email(email,"Movie Booking Confirmation", "Thank you for your order! Your ticket ID is : " + db.getMovieTicketID(email) + "\nOrder Summary\nCustomer Information\n\tName: " + custName + "\n\tEmail: " + email + "\n\tGender: " + custGender + "\nBooking Confirmation\n\tMovie Name: " + movieName + "\nYour Selected Seat: " + seat + "\nPayment link: www.paypal.me/zeyad1910");
                     res("The receipt has been sent to your email.");
                     res2("Can I help you with anything else?");
@@ -402,6 +453,31 @@ b2.addActionListener(new ActionListener(){
                 b3.setVisible(true);
                 res2("How else can I help you?");
             }
+            else if (b2.getText().equals("Smile")){
+                String result = WikipediaInfo.info("Smile");
+                for (int i = 0, size = result.length(); i < size; i += 88)
+                    res2(result.substring(i, Math.min(i + 88, size)));
+                b2.setText("Amend your booking");
+                b.setText("Book a Ticket");
+                b3.setText("Cancel your booking");
+                b.setVisible(true);
+                b2.setVisible(true);
+                b3.setVisible(true);
+            }
+            else if(b2.getText().equals("Smile Trailer")){
+                Desktop d = Desktop.getDesktop();
+                try {
+                    d.browse(new URI("https://www.youtube.com/watch?v=BcDK7lkzzsU"));
+                } catch (IOException | URISyntaxException e2) {
+                    e2.printStackTrace();
+                } 
+                b2.setText("Amend your booking");
+                b.setText("Book a Ticket");
+                b3.setText("Cancel your booking");
+                b.setVisible(true);
+                b2.setVisible(true);
+                b3.setVisible(true);
+            }
             else if(b2.getText().equals("Amend your booking")){
                 b.setText("Cancel");
                 b.setVisible(true);
@@ -432,6 +508,31 @@ b3.addActionListener(new ActionListener(){
             b2.setVisible(false);
             b3.setVisible(false);
             count = 10;
+        }
+        else if(b3.getText().equals("Thor Love and Thunder Trailer")){
+            Desktop d = Desktop.getDesktop();
+            try {
+                d.browse(new URI("https://www.youtube.com/watch?v=Go8nTmfrQd8"));
+            } catch (IOException | URISyntaxException e2) {
+                e2.printStackTrace();
+            } 
+            b2.setText("Amend your booking");
+                b.setText("Book a Ticket");
+                b3.setText("Cancel your booking");
+                b.setVisible(true);
+                b2.setVisible(true);
+                b3.setVisible(true);
+        }
+        else if (b.getText().equals("Thor Love and Thunder")){
+            String result = WikipediaInfo.info("Thor Love and Thunder");
+            for (int i = 0, size = result.length(); i < size; i += 88)
+                res2(result.substring(i, Math.min(i + 88, size)));
+            b2.setText("Amend your booking");
+            b.setText("Book a Ticket");
+            b3.setText("Cancel your booking");
+            b.setVisible(true);
+            b2.setVisible(true);
+            b3.setVisible(true);
         }
 }
 
