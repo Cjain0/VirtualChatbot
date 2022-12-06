@@ -36,5 +36,9 @@ We used pattern matching to give more leeway for users when inputting their requ
 ### Movie Trailer
 When the user clicks on the button for which movie trailer they want to watch, it would open a new tab on Youtube with the trailer where they can watch the trailer in full. This feature would provide users with a convenient way to watch movie trailers directly within the chatbot, without needing to leave the chatbot to search for them. Additionally, this feature could be used to increase engagement with the chatbot and provide users with a better overall experience.
 
+![trailer](/outputs/Movie_Trailer.png) 
+
 ### Movie Information
 The Movie Information feature is a chatbot that allows users to get information about their favorite movies. The chatbot uses information from Wikipedia to provide users with an overview of the movie, its cast and crew, its release date and other details. This feature is an excellent source of information for movie buffs and those who want to learn more about a movie before watching it.
+
+![information](/outputs/Movie_Information.png) 
