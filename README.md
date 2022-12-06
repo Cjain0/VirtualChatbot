@@ -4,7 +4,7 @@
 
 A virtual assistant that allows for customers to book/change/cancel new or current movie ticket bookings. After confirming their booking, the customer gets their ticket sent to them via email. The entire project was developed using Java and utilized libraries such as JDBC, JSwing, Java AWT, and Java Mail for our features. We went with a simple, straight-forward design for our assistant's user interface. The user has two input options, either by directly typing into the chatbox or by clicking one of the buttons right above it. After the user has finished their interaction and their request was met, they receive a confirmation email of the interaction via the email on file.    
 
-## New Features: 
+## Old Features: 
 ### Amending an Existing Movie Ticket 
 Users can now finally edit their existing tickets. There are several ways to access this feature. User can either type in that they would like to edit/amend their ticket or click the relevant button at the beginning of the interaction. Once the process has started the user can amend any detail relating to the ticket. However, the customer details cannot be amended once saved on the database. This improves our system by being more forgiving with mistakes and providing the user with an option to edit their tickets in case they cannot make it to the current booked movie time.
 
@@ -31,3 +31,10 @@ We used MySQL, JDBC library and Docker to create a database to store customer, m
 We used pattern matching to give more leeway for users when inputting their request for the virtual assistant. Using string arrays of acceptable answers and different variations of the same request, we were able to compare the chatbox input with the elements of the array and set our variable values accordingly. Using pattern matching is a huge improvement from our previous version which hard-coded if-else statements and switch statements
 
 ![pattern_matching](/outputs/pattern_matching.png)
+
+## New Features
+### Movie Trailer
+When the user clicks on the button for which movie trailer they want to watch, it would open a new tab on Youtube with the trailer where they can watch the trailer in full. This feature would provide users with a convenient way to watch movie trailers directly within the chatbot, without needing to leave the chatbot to search for them. Additionally, this feature could be used to increase engagement with the chatbot and provide users with a better overall experience.
+
+### Movie Information
+The Movie Information feature is a chatbot that allows users to get information about their favorite movies. The chatbot uses information from Wikipedia to provide users with an overview of the movie, its cast and crew, its release date and other details. This feature is an excellent source of information for movie buffs and those who want to learn more about a movie before watching it.
