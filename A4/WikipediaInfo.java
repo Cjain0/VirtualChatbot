@@ -16,7 +16,7 @@ public class WikipediaInfo {
         String wikipediaURL;
         try {
             if(moviename.equals("Black Adam")){
-                wikipediaURL = "https://en.wikipedia.org/wiki/Black_Adam";
+                wikipediaURL = "https://en.wikipedia.org/wiki/Black_Adam_(film)";
             }
             else if(moviename.equals("Smile")){
                 wikipediaURL = "https://en.wikipedia.org/wiki/Smile_(2022_film)";
